@@ -3,7 +3,7 @@ let addToy = false;
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
-  const toyCollection = document.querySelector('#toy-Collection');
+  const toyCollection = document.querySelector('#toy-collection');
 
   addBtn.addEventListener("click", () => {
     // hide & seek with the form
@@ -30,13 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   toyCollection.addEventListener('click', event => {
     if (event.target.classList.contains('like-btn')) {
-      const toyId = event.target.dispatchEvent;
+      const toyId = event.target.id;
       const toyLikes = event.target.previousElementSibling;
       const currentLikes = parseInt(toyLikes.textContent);
 
-      const updateLieks = currentLikes + 1;
+      const updateLikes = currentLikes + 1;
 
-      updateLieks(toyId, updatedLikes, toyLikes);
+      updateLikes(toyId, updateLikes, toyLikes);
     }
   });
 });
@@ -47,7 +47,7 @@ function fetchToys() {
     .then(toys => {
       toys.forEach(toy => renderToy(toy));
     })
-    .catch(error => console.error("Error fetching toys: error"));
+    .catch(error => console.error("Error fetching toys:", error ));
 }
 
 function renderToy(toy) {
@@ -92,7 +92,7 @@ function createToy(toyData) {
     .catch(error => console.error("Error creating toy:", error));
 }
 
-function updateLieks(toyId, updatedLikes, toyLikesElement) {
+function updateLikes(toyId, updatedLikes, toyLikesElement) {
   fetch(`http://localhost:3000/toys/${toyId}`, {
     method: 'PATCH',
     headers: {

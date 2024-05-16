@@ -91,3 +91,19 @@ function createToy(toyData) {
     .then(newToy => renderToy(newToy))
     .catch(error => console.error("Error creating toy:", error));
 }
+
+function updateLieks(toyId, updatedLikes, toyLikesElement) {
+  fetch(`http://localhost:3000/toys/${toyId}`, {
+    method: 'PATCH',
+    headers: {
+      "Content-Type" : "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({likes: updatedLikes})
+  })
+    .then(response => response.json())
+    .then(updatedToy => {
+      toyLikesElement.textContent = `${updatedToy.likes} Likes`;
+    })
+    .catch(error => console.error("Error updating likes:", error));
+}

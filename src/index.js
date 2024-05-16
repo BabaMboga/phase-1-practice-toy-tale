@@ -34,9 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const toyLikes = event.target.previousElementSibling;
       const currentLikes = parseInt(toyLikes.textContent);
 
-      const updateLikes = currentLikes + 1;
+      const updateLikesCount = currentLikes + 1;
 
-      updateLikes(toyId, updateLikes, toyLikes);
+      updateLikes(toyId, updateLikesCount, toyLikes);
     }
   });
 });

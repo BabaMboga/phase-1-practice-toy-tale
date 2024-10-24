@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function fetchToys() {
-  fetch("http://localhost:3000/toys")
+  fetch("https://pseudo-data.onrender.com/toys")
     .then(response => response.json())
     .then(toys => {
       toys.forEach(toy => renderToy(toy));
@@ -80,7 +80,7 @@ function renderToy(toy) {
 }
 
 function createToy(toyData) {
-  fetch("http://localhost:3000/toys", {
+  fetch("https://pseudo-data.onrender.com/toys", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -93,7 +93,7 @@ function createToy(toyData) {
 }
 
 function updateLikes(toyId, updatedLikes, toyLikesElement) {
-  fetch(`http://localhost:3000/toys/${toyId}`, {
+  fetch(`https://pseudo-data.onrender.com/toys/${toyId}`, {
     method: 'PATCH',
     headers: {
       "Content-Type" : "application/json",
